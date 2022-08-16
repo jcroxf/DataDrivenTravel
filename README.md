@@ -46,7 +46,7 @@ Create a Travel-app class and automate testing with data driven from SQL databas
 `SELECT Hunger, Id, Species FROM Animal WHERE Name = 'Jess';`
 
 **To query all pets for an owner**<br>
-`SELECT animal.Name, animal.Species FROM Animal animal, Owner owner WHERE owner.Name = 'Floz'`
+`SELECT animal.Name, animal.Species FROM Animal animal, Owner owner WHERE owner.Name = 'Floz';`
 
 
 
