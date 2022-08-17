@@ -49,6 +49,70 @@ Create a Travel-app class and automate testing with data driven from SQL databas
 `SELECT animal.Name, animal.Species FROM Animal animal, Owner owner WHERE owner.Name = 'Floz';`
 
 
+**Examples of using the Factory**<br>
+`Cat jess = Factory.createCat("Jess");`<br>
+`Dog milo = Factory.createDog("Milo");`<br>
+`Owner floz = Factory.createOwner("Floz", "Bridgnorth");`<br>
 
 
+# AHOY! TRAVEL FUNCTIONALITY
+## User Stories
 
+*USER STORY 1:* <br>
+As a user, I can have a specific account for the AHOY! App to link to my journey history 
+
+*USER STORY 2:* <br>
+As a user, I would like to see my previous week’s journeys on trains and buses  
+
+*USER STORY 3:* <br>
+As a user, for any fare from the past week I would like to check the price of that fare 
+
+*USER STORY 4:* <br>
+As a user, for any fare from the past week I would like to be able to check where a train/bus ticket commenced, and where my ticket terminated at 
+
+## Database Schema- AHOY! Travel App
+
+**Customer Table**
+- Id CHAR(36)
+- Name VARCHAR(100)
+
+**Ticket table**
+- Price INT
+- TravelType CHAR(25)
+- StationStart VARCHAR(100)
+- StationEnd VARCHAR(100)
+- CustomerId CHAR(36)
+- TicketId CHAR(36)
+
+**To create the Customer table**<br>
+`CREATE TABLE Customer (Id CHAR(36), Name VARCHAR(100), PRIMARY KEY(Id));`
+
+**To create the Ticket table**<br>
+`CREATE TABLE Ticket (Price INT, TravelType CHAR(25), StationStart VARCHAR(100), StationEnd VARCHAR(100), TicketId CHAR(36), CustomerId CHAR(36), FOREIGN KEY(CustomerId) REFERENCES Customer(Id));`
+
+**To insert a new Customer row**<br>
+`INSERT INTO Customer (Id, Name) VALUES ('eea72b1a-a638-4cd5-bce4-7b632ea7dfeb', 'James');`
+
+**To insert a new Customer row**<br>
+`INSERT INTO Customer (Id, Name) VALUES ('118114ad-e6cc-44ad-bdc5-ad7a34db5e07', 'Alec');`
+
+**To insert a new Customer row**<br>
+`INSERT INTO Customer (Id, Name) VALUES ('ac97b189-de69-4914-818d-dbbc968a4671', 'Avais');`
+
+**To insert a new Ticket row**<br>
+`INSERT INTO Ticket (Price, TravelType, StationStart, StationEnd, TicketId, CustomerId) VALUES ('1000', 'Train', 'Deansgate', 'Euxton', 'be30708f-4bdc-4302-b17b-7920848728d7', 'eea72b1a-a638-4cd5-bce4-7b632ea7dfeb');`
+
+**To insert a new Ticket row**<br>
+`INSERT INTO Ticket (Price, TravelType, StationStart, StationEnd, TicketId, CustomerId) VALUES ('525', "Train", "Liverpool", "Prescot", 'daa4fac5-a7b0-434f-98f1-9a4f8923e0a1', '118114ad-e6cc-44ad-bdc5-ad7a34db5e07');`
+
+**To insert a new Ticket row**<br>
+`INSERT INTO Ticket (Price, TravelType, StationStart, StationEnd, TicketId, CustomerId) VALUES ('7750', "Train", "Liverpool", "Edinburgh",  '7402d754-688d-47d6-a274-c0490bb723cc', 'ac97b189-de69-4914-818d-dbbc968a4671');`
+
+**To insert a new Ticket row**<br>
+`INSERT INTO Ticket (Price, TravelType, StationStart, StationEnd, TicketId, CustomerId) VALUES ('350', "Bus", "Manchester Victoria", "Oxford Road", '897287b8-fe0b-4dae-9176-ef8d9c8ec52b', 'ac97b189-de69-4914-818d-dbbc968a4671');`
+
+**To query an ticket**<br>
+`SELECT TicketId, TravelType FROM Ticket WHERE StationStart = 'Liverpool';`
+
+**To query all tickets for an customer**<br>
+`SELECT customer.Name, ticket.StationStart, ticket.StationEnd FROM Ticket ticket, Customer customer WHERE customer.Name = 'Avais' AND ticket.CustomerId = Customer.Id;`
