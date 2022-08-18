@@ -59,16 +59,16 @@ Create a Travel-app class and automate testing with data driven from SQL databas
 ## User Stories
 
 *USER STORY 1:* <br>
-As a user, I can have a specific account for the AHOY! App to link to my journey history 
+As a user, I can have a specific account for the AHOY! App to link to my past tickets
 
 *USER STORY 2:* <br>
-As a user, I would like to see my previous week’s journeys on trains and buses  
+As a user, I would like to see the ticket IDs for all my train and bus fares
 
 *USER STORY 3:* <br>
-As a user, for any fare from the past week I would like to check the price of that fare 
+As a user, for any fare I've purchased I would like to check the price
 
 *USER STORY 4:* <br>
-As a user, for any fare from the past week I would like to be able to check where a train/bus ticket commenced, and where my ticket terminated at 
+As a user, for any fare I have purchased I would like to be able to check where a train/bus ticket commenced, and where my ticket terminated at 
 
 ## Database Schema- AHOY! Travel App
 
@@ -103,16 +103,17 @@ As a user, for any fare from the past week I would like to be able to check wher
 `INSERT INTO Ticket (Price, TravelType, StationStart, StationEnd, TicketId, CustomerId) VALUES ('1000', 'Train', 'Deansgate', 'Euxton', 'be30708f-4bdc-4302-b17b-7920848728d7', 'eea72b1a-a638-4cd5-bce4-7b632ea7dfeb');`
 
 **To insert a new Ticket row**<br>
-`INSERT INTO Ticket (Price, TravelType, StationStart, StationEnd, TicketId, CustomerId) VALUES ('525', "Train", "Liverpool", "Prescot", 'daa4fac5-a7b0-434f-98f1-9a4f8923e0a1', '118114ad-e6cc-44ad-bdc5-ad7a34db5e07');`
+`INSERT INTO Ticket (Price, TravelType, StationStart, StationEnd, TicketId, CustomerId) VALUES ('525', 'Train', 'Liverpool', 'Prescot', 'daa4fac5-a7b0-434f-98f1-9a4f8923e0a1', '118114ad-e6cc-44ad-bdc5-ad7a34db5e07');`
 
 **To insert a new Ticket row**<br>
-`INSERT INTO Ticket (Price, TravelType, StationStart, StationEnd, TicketId, CustomerId) VALUES ('7750', "Train", "Liverpool", "Edinburgh",  '7402d754-688d-47d6-a274-c0490bb723cc', 'ac97b189-de69-4914-818d-dbbc968a4671');`
+`INSERT INTO Ticket (Price, TravelType, StationStart, StationEnd, TicketId, CustomerId) VALUES ('7750', 'Train', 'Liverpool', 'Edinburgh',  '7402d754-688d6-a274-c0490bb723cc', 'ac97b189-de69-4914-818d-dbbc968a4671');`
 
 **To insert a new Ticket row**<br>
-`INSERT INTO Ticket (Price, TravelType, StationStart, StationEnd, TicketId, CustomerId) VALUES ('350', "Bus", "Manchester Victoria", "Oxford Road", '897287b8-fe0b-4dae-9176-ef8d9c8ec52b', 'ac97b189-de69-4914-818d-dbbc968a4671');`
+`INSERT INTO Ticket (Price, TravelType, StationStart, StationEnd, TicketId, CustomerId) VALUES ('350', 'Bus', 'Manchester Victoria', 'Oxford Road', '897287b8-fe0b-4dae-9176-ef8d9c8ec52b', 'ac97b189-de69-4914-818d-dbbc968a4671');`
 
-**To query an ticket**<br>
-`SELECT TicketId, TravelType FROM Ticket WHERE StationStart = 'Liverpool';`
+**To query an ticket where station start is a particular station**<br>
+`SELECT TicketId, TravelType, StationStart, StationEnd, Price FROM Ticket WHERE StationStart = 'Liverpool';`
 
-**To query all tickets for an customer**<br>
-`SELECT customer.Name, ticket.StationStart, ticket.StationEnd FROM Ticket ticket, Customer customer WHERE customer.Name = 'Avais' AND ticket.CustomerId = Customer.Id;`
+**User Story 4- To query all tickets for an customer**<br>
+`SELECT customer.Name, ticket.StationStart, ticket.StationEnd FROM Ticket ticket, Customer customer WHERE customer.Name = 'Avais' AND ticket.CustomerId = customer.Id;`
+
