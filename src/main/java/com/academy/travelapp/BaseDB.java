@@ -1,8 +1,8 @@
 package com.academy.travelapp;
 
 import java.util.UUID;
-import java.sql.ResultSet;
 
+import java.sql.ResultSet;
 
 public class BaseDB implements base, Processor {
 	protected static final int MAX_NAME = 100;

@@ -4,10 +4,6 @@ import java.util.UUID;
 
 public interface base {
 	public UUID getId();
-	/**
-	 * 
-	 * @return
-	 */
-	public String getName();
-	void buyTicket(Ticket ticket);
+		public String getName();
+	
 }
