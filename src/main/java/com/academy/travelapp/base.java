@@ -9,4 +9,5 @@ public interface base {
 	 * @return
 	 */
 	public String getName();
+	void buyTicket(Ticket ticket);
 }

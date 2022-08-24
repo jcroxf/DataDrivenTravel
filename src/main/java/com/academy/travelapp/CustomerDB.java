@@ -41,9 +41,9 @@ public class CustomerDB extends BaseDB implements Customer {
 					String StationEnd = results.getString("ticket.StationEnd");
 					
 					if (TravelType.equals("T")) {
-						this.transport.add(Factory.loadedTrain(uuid,price,StationStart,StationEnd));
-						}else if ()(TravelType.equals("B")) {
-							this.transport.add(Factory.loadedBus(uuid,price,StationStart,StationEnd));
+						this.transport.add(Factory.loadedTrainTickets(uuid,price,StationStart,StationEnd));
+						}else if (TravelType.equals("B")) {
+							this.transport.add(Factory.loadedBusTickets(uuid,price,StationStart,StationEnd));
 							}
 				}
 			}catch(Exception ex) {

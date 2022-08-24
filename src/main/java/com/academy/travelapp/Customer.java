@@ -7,5 +7,7 @@ public interface Customer extends base {
 	 * 
 	 */
 	public List<Ticket> getTickets();
+	public void buyTicket(Ticket ticket);
+	
 }
 
